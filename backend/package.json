@@ -19,5 +19,8 @@
   "homepage": "https://github.com/luxeivan/ahj_chatBack#readme",
   "dependencies": {
     "ws": "^8.8.0"
+  },
+  "devDependencies": {
+    "push-dir": "^0.4.1"
   }
 }

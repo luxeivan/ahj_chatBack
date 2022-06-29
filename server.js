@@ -1,7 +1,14 @@
-const { WebSocketServer } = require('ws');
+const WS = require('ws');
+const http = require('http');
+const server = http.createServer((req, res) => {
+  console.log(req, res);
+  res.end('response');
+});
+
+console.log(server);
 let openUsers = [];
 
-const wss = new WebSocketServer({ port: 8081 });
+const wss = new WS.Server( {server} );
 
 
 wss.on('connection', (ws) => {
@@ -34,11 +41,12 @@ setInterval(() => {
   Array.from(wss.clients).filter(o => o.readyState === 1).forEach(o => {
     newListUser.push(o.username);
   });
-  openUsers.forEach((item,index)=>{
-    if(!newListUser.includes(item,0)){
-      openUsers.splice(index,1)
+  openUsers.forEach((item, index) => {
+    if (!newListUser.includes(item, 0)) {
+      openUsers.splice(index, 1)
       Array.from(wss.clients).filter(o => o.readyState === 1).forEach(o => o.send(JSON.stringify({ openUsers })));
     }
   });
 }, 1000);
-console.log('start on 8081');
+server.listen(8081);
+console.log('start');

@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "forever -w server.js"
+    "test": "forever -w server.js",
+    "start": "node server.js"
   },
   "repository": {
     "type": "git",

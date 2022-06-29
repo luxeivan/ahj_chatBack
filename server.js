@@ -48,5 +48,5 @@ setInterval(() => {
     }
   });
 }, 1000);
-server.listen(8081);
+server.listen(80);
 console.log('start');
